@@ -1,6 +1,6 @@
-name: "my-website"
+name: "MAT-502-11"
 navbar:
-  title: "My Website"
+  title: "MAT-502-11"
   left:
     - text: "Home"
       href: index.html
