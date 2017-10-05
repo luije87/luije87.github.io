@@ -4,8 +4,20 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "About"
-      href: about.html
+    - text: "Assigments"
+      href: assigments.html
+      menu:
+        - text: "Basic Statistics in R"
+          href: MAT_502_HW_1_Acosta.html
+        - text: "Getting familiar with R and data"
+          href: MAT_502_HW_2_Acosta.html
+        - text: "Central Limit Theorem"
+          href: MAT_502_HW_3_Acosta.html
+        - text: "Hypothesis Testing"
+          href: MAT_502_HW_4_Acosta.html
+        - text: "Final Project"
+          href: Final_Project_Acosta.html
+          
 output:
   html_document:
     theme: cosmo
