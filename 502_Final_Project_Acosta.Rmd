@@ -1,0 +1,194 @@
+---
+title: "Final Project"
+author: "Luis Eduardo Acosta Aparicio"
+---
+
+##Introduction
+
+- How many rbi (Runs Batted In) can a player earn in a regular season?
+
+- Which position in the line up could the player fit better in order to help the team to produce more runs? Which means more chance to win
+
+I will be analyzing from my observational data set that I have collected over time from MLB regular seasons 2000-2016. In order to improve my data analysis I excluded pitchers, and players with less than 1000 at bat, also I chose the line up position with the most recurrent position in the past 16 seasons. The line up position is crucial for predicting. It is well known that players from 3 to 6 find more runners in score position than any other line up position.
+
+The result will help scouts and team members to relocate players and predict rbi.
+
+##Knowing the data set
+
+Variables | Description
+--- | --- 
+player_id | `Player id`
+player_name | `Player name`
+at_bat | `Number of at bat`
+rbi_average | `Total rbi divided by at bat`
+hit_average | `Total hits divided by at bat`
+line_average | `Total lines divided by at bat`
+ground_average | `Total grounds divided by at bat`
+fly_average | `Total flies divided by at bat`
+strikeout_average | `Total strike outs divided by at bat`
+lineup_position | `Most recurrent line up position`
+
+```{r}
+path <- "C:\\Users\\leacosta.STU\\Documents\\project.csv"
+data <- read.csv(path)
+mlb_data <- data[ , c("rbi_average", "hit_average", "line_average", "ground_average", "lineup_position")]
+```
+
+
+```{r, message=FALSE}
+attach(mlb_data)
+```
+
+
+```{r}
+pairs(mlb_data, pch=16, col="blue")
+```
+This pairs graph show us the correlation between variables. What I expected : 
+
+- line_average and hit_average to have an strong correletation, meaning the line drive is hardest to catch (more hits) , than grounds and flies in this order.
+
+- lineup_position and rbi_average shows us positions 3, 4, 5 run batters in more than any other line up position.
+
+
+ Our model will use the following relation:
+ 
+Rbi = ($\beta_0$ + $\beta_1$ * hit_average + $\beta_2$ * line_average + $\beta_3$ * ground_average) * AtBat
+
+```{r}
+mlb_model <- lm(rbi_average ~ hit_average + line_average + ground_average + format(lineup_position), data = mlb_data)
+```
+
+```{r}
+summary(mlb_data)
+```
+
+```{r}
+summary(mlb_model)
+```
+The p-values for the selected variables are significants and Adjust R Square is 77%, meaning the model explain 77% the variability of the response around its means.
+
+```{r}
+par(mfrow=c(2,2))
+plot(mlb_model, which = 1:4)
+```
+
+Residual vs Fitted
+
+Observed values are not far away from 0, which means the model fitted well:
+
+residual = observed y - model-predicted y, values should be around 0.
+
+We have three residuals that are away from 0; 67, 83 and 117
+
+Lets predict one of those data points (67), Wilson Ramos, 35 RBI in 2017:
+
+```{r}
+predict(mlb_model, list(line_average = 0.14903, ground_average = 0.4735, hit_average = 0.25961, lineup_position = 7)) * 280
+```
+
+The prediction for 2017 season is not that close.
+
+Normal Q-Q
+
+Observations lie well along the 45-degree line, so we can asume that normality holds here.
+
+##Season (2017)
+
+I picked 4 players with different positions in the line up and applied the model:
+
+####Yuliesky Gourriel
+![Y. Gourriel](http://a.espncdn.com/combiner/i?img=/i/headshots/mlb/players/full/36006.png&w=350&h=254 "Y. Gourriel")
+
+At Bat : `529`
+
+**RBI** : `75`
+
+Most recurrent line up position : `7`
+
+Variables | Values | Average
+--- | --- | ---
+Hits | `158` | `0.29867`
+Lines Drive | `88` | `0.16635`
+Grounds | `218` | `0.41209`
+
+```{r}
+predict(mlb_model, list(line_average = 0.16635, ground_average = 0.41209, hit_average = 0.29867, lineup_position = 7)) * 529
+```
+
+####Jose Abreu
+
+![J. Abreu](http://a.espncdn.com/combiner/i?img=/i/headshots/mlb/players/full/33095.png&w=350&h=254 "J. Abreu")
+
+At Bat : `621`
+
+**RBI** : `102`
+
+Most recurrent line up position : `5`
+
+Variables | Values | Average
+--- | --- | ---
+Hits | `189` | `0.30434`
+Lines Drive | `92` | `0.14814`
+Grounds | `229` | `0.36876`
+
+```{r}
+predict(mlb_model, list(line_average = 0.14814, ground_average = 0.36876, hit_average = 0.30434, lineup_position = 5)) * 621
+
+```
+
+####Jose Altuve
+
+![J. Altuve](http://a.espncdn.com/combiner/i?img=/i/headshots/mlb/players/full/31662.png&w=350&h=254 "J. Altuve")
+
+At Bat : `590`
+
+**RBI** : `81`
+
+Most recurrent line up position : `1`
+
+Variables | Values | Average
+--- | --- | ---
+Hits | `204` | `0.32033`
+Lines Drive | `102` | `0.17288`
+Grounds | `236` | `0.4`
+
+
+```{r}
+predict(mlb_model, list(line_average = 0.17288, ground_average = 0.4, hit_average = 0.32033, lineup_position = 1)) * 590
+```
+####Evan Longoria
+
+![E. Longoria](http://a.espncdn.com/combiner/i?img=/i/headshots/mlb/players/full/28639.png&w=350&h=254 "E. Longoria")
+
+At Bat : `613`
+
+**RBI** : `86`
+
+Most recurrent line up position : `3`
+
+Variables | Values | Average
+--- | --- | ---
+Hits | `160` | `0.26101`
+Lines Drive | `102` | `0.16630`
+Grounds | `236` | `0.36541`
+
+```{r}
+predict(mlb_model, list(line_average = 0.16630, ground_average = 0.36541, hit_average = 0.26101, lineup_position = 3)) * 613
+```
+
+#Conclusion
+
+The predictions for players selected were close to their RBI in 2017. The model works as expected. The baseball game has a lot of stats that can influence our results. I learned we cannot exclude variables we know are important like lineup_position in this case which improved my predictions notably.
+
+I will keep working on this model to improve it to help coaches to find the perfect fit in their line up.
+
+
+#References
+
+Fan Graph - https://www.fangraphs.com
+
+ESPN - http://www.espn.com/
+
+Retrosheet - http://www.retrosheet.org/
+
+Baseball Reference - https://www.baseball-reference.com/

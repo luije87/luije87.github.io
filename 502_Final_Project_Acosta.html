@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Luis Eduardo Acosta Aparicio" />
+
+
+<title>Final Project</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">MAT-502-11</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Assigments
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="MAT_502_HW_1_Acosta.html">Basic Statistics in R</a>
+    </li>
+    <li>
+      <a href="MAT_502_HW_2_Acosta.html">Getting familiar with R and data</a>
+    </li>
+    <li>
+      <a href="MAT_502_HW_3_Acosta.html">Central Limit Theorem</a>
+    </li>
+    <li>
+      <a href="MAT_502_HW_4_Acosta.html">Hypothesis Testing</a>
+    </li>
+    <li>
+      <a href="502_Final_Project_Acosta.html">Final Project</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Final Project</h1>
+<h4 class="author"><em>Luis Eduardo Acosta Aparicio</em></h4>
+
+</div>
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<ul>
+<li><p>How many rbi (Runs Batted In) can a player earn in a regular season?</p></li>
+<li><p>Which position in the line up could the player fit better in order to help the team to produce more runs? Which means more chance to win</p></li>
+</ul>
+<p>I will be analyzing from my observational data set that I have collected over time from MLB regular seasons 2000-2016. In order to improve my data analysis I excluded pitchers, and players with less than 1000 at bat, also I chose the line up position with the most recurrent position in the past 16 seasons. The line up position is crucial for predicting. It is well known that players from 3 to 6 find more runners in score position than any other line up position.</p>
+<p>The result will help scouts and team members to relocate players and predict rbi.</p>
+</div>
+<div id="knowing-the-data-set" class="section level2">
+<h2>Knowing the data set</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Variables</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>player_id</td>
+<td><code>Player id</code></td>
+</tr>
+<tr class="even">
+<td>player_name</td>
+<td><code>Player name</code></td>
+</tr>
+<tr class="odd">
+<td>at_bat</td>
+<td><code>Number of at bat</code></td>
+</tr>
+<tr class="even">
+<td>rbi_average</td>
+<td><code>Total rbi divided by at bat</code></td>
+</tr>
+<tr class="odd">
+<td>hit_average</td>
+<td><code>Total hits divided by at bat</code></td>
+</tr>
+<tr class="even">
+<td>line_average</td>
+<td><code>Total lines divided by at bat</code></td>
+</tr>
+<tr class="odd">
+<td>ground_average</td>
+<td><code>Total grounds divided by at bat</code></td>
+</tr>
+<tr class="even">
+<td>fly_average</td>
+<td><code>Total flies divided by at bat</code></td>
+</tr>
+<tr class="odd">
+<td>strikeout_average</td>
+<td><code>Total strike outs divided by at bat</code></td>
+</tr>
+<tr class="even">
+<td>lineup_position</td>
+<td><code>Most recurrent line up position</code></td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>path &lt;- &quot;C:\\Users\\leacosta.STU\\Documents\\project.csv&quot;
+data &lt;- read.csv(path)
+mlb_data &lt;- data[ , c(&quot;rbi_average&quot;, &quot;hit_average&quot;, &quot;line_average&quot;, &quot;ground_average&quot;, &quot;lineup_position&quot;)]</code></pre>
+<pre class="r"><code>attach(mlb_data)</code></pre>
+<pre class="r"><code>pairs(mlb_data, pch=16, col=&quot;blue&quot;)</code></pre>
+<p><img src="502_Final_Project_Acosta_files/figure-html/unnamed-chunk-3-1.png" width="672" /> This pairs graph show us the correlation between variables. What I expected :</p>
+<ul>
+<li><p>line_average and hit_average to have an strong correletation, meaning the line drive is hardest to catch (more hits) , than grounds and flies in this order.</p></li>
+<li><p>lineup_position and rbi_average shows us positions 3, 4, 5 run batters in more than any other line up position.</p></li>
+</ul>
+<p>Our model will use the following relation:</p>
+<p>Rbi = (<span class="math inline">\(\beta_0\)</span> + <span class="math inline">\(\beta_1\)</span> * hit_average + <span class="math inline">\(\beta_2\)</span> * line_average + <span class="math inline">\(\beta_3\)</span> * ground_average) * AtBat</p>
+<pre class="r"><code>mlb_model &lt;- lm(rbi_average ~ hit_average + line_average + ground_average + format(lineup_position), data = mlb_data)</code></pre>
+<pre class="r"><code>summary(mlb_data)</code></pre>
+<pre><code>##   rbi_average      hit_average      line_average    ground_average  
+##  Min.   :0.0584   Min.   :0.1947   Min.   :0.1161   Min.   :0.1943  
+##  1st Qu.:0.1022   1st Qu.:0.2488   1st Qu.:0.1643   1st Qu.:0.3208  
+##  Median :0.1219   Median :0.2621   Median :0.1809   Median :0.3575  
+##  Mean   :0.1231   Mean   :0.2635   Mean   :0.1814   Mean   :0.3639  
+##  3rd Qu.:0.1412   3rd Qu.:0.2797   3rd Qu.:0.1971   3rd Qu.:0.4056  
+##  Max.   :0.2092   Max.   :0.3209   Max.   :0.2533   Max.   :0.5813  
+##  lineup_position
+##  Min.   :1.000  
+##  1st Qu.:2.000  
+##  Median :3.000  
+##  Mean   :4.071  
+##  3rd Qu.:6.000  
+##  Max.   :9.000</code></pre>
+<pre class="r"><code>summary(mlb_model)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = rbi_average ~ hit_average + line_average + ground_average + 
+##     format(lineup_position), data = mlb_data)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.029749 -0.008996 -0.001147  0.007998  0.047274 
+## 
+## Coefficients:
+##                           Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)               0.065343   0.012480   5.236 3.04e-07 ***
+## hit_average               0.660817   0.060822  10.865  &lt; 2e-16 ***
+## line_average             -0.219223   0.034286  -6.394 5.94e-10 ***
+## ground_average           -0.261231   0.016442 -15.888  &lt; 2e-16 ***
+## format(lineup_position)2  0.014618   0.002614   5.591 4.94e-08 ***
+## format(lineup_position)3  0.032195   0.003063  10.510  &lt; 2e-16 ***
+## format(lineup_position)4  0.042626   0.003268  13.044  &lt; 2e-16 ***
+## format(lineup_position)5  0.030952   0.002977  10.398  &lt; 2e-16 ***
+## format(lineup_position)6  0.015821   0.003328   4.754 3.06e-06 ***
+## format(lineup_position)7  0.021401   0.004046   5.290 2.32e-07 ***
+## format(lineup_position)8  0.017106   0.003018   5.669 3.29e-08 ***
+## format(lineup_position)9  0.005194   0.004172   1.245    0.214    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.01373 on 310 degrees of freedom
+## Multiple R-squared:  0.7828, Adjusted R-squared:  0.7751 
+## F-statistic: 101.6 on 11 and 310 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>The p-values for the selected variables are significants and Adjust R Square is 77%, meaning the model explain 77% the variability of the response around its means.</p>
+<pre class="r"><code>par(mfrow=c(2,2))
+plot(mlb_model, which = 1:4)</code></pre>
+<p><img src="502_Final_Project_Acosta_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Residual vs Fitted</p>
+<p>Observed values are not far away from 0, which means the model fitted well:</p>
+<p>residual = observed y - model-predicted y, values should be around 0.</p>
+<p>We have three residuals that are away from 0; 67, 83 and 117</p>
+<p>Lets predict one of those data points (67), Wilson Ramos, 35 RBI in 2017:</p>
+<pre class="r"><code>predict(mlb_model, list(line_average = 0.14903, ground_average = 0.4735, hit_average = 0.25961, lineup_position = 7)) * 280</code></pre>
+<pre><code>##        1 
+## 28.54172</code></pre>
+<p>The prediction for 2017 season is not that close.</p>
+<p>Normal Q-Q</p>
+<p>Observations lie well along the 45-degree line, so we can asume that normality holds here.</p>
+</div>
+<div id="season-2017" class="section level2">
+<h2>Season (2017)</h2>
+<p>I picked 4 players with different positions in the line up and applied the model:</p>
+<div id="yuliesky-gourriel" class="section level4">
+<h4>Yuliesky Gourriel</h4>
+<div class="figure">
+<img src="http://a.espncdn.com/combiner/i?img=/i/headshots/mlb/players/full/36006.png&amp;w=350&amp;h=254" title="Y. Gourriel" alt="Y. Gourriel" />
+<p class="caption">Y. Gourriel</p>
+</div>
+<p>At Bat : <code>529</code></p>
+<p><strong>RBI</strong> : <code>75</code></p>
+<p>Most recurrent line up position : <code>7</code></p>
+<table>
+<thead>
+<tr class="header">
+<th>Variables</th>
+<th>Values</th>
+<th>Average</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hits</td>
+<td><code>158</code></td>
+<td><code>0.29867</code></td>
+</tr>
+<tr class="even">
+<td>Lines Drive</td>
+<td><code>88</code></td>
+<td><code>0.16635</code></td>
+</tr>
+<tr class="odd">
+<td>Grounds</td>
+<td><code>218</code></td>
+<td><code>0.41209</code></td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>predict(mlb_model, list(line_average = 0.16635, ground_average = 0.41209, hit_average = 0.29867, lineup_position = 7)) * 529</code></pre>
+<pre><code>##        1 
+## 74.05549</code></pre>
+</div>
+<div id="jose-abreu" class="section level4">
+<h4>Jose Abreu</h4>
+<div class="figure">
+<img src="http://a.espncdn.com/combiner/i?img=/i/headshots/mlb/players/full/33095.png&amp;w=350&amp;h=254" title="J. Abreu" alt="J. Abreu" />
+<p class="caption">J. Abreu</p>
+</div>
+<p>At Bat : <code>621</code></p>
+<p><strong>RBI</strong> : <code>102</code></p>
+<p>Most recurrent line up position : <code>5</code></p>
+<table>
+<thead>
+<tr class="header">
+<th>Variables</th>
+<th>Values</th>
+<th>Average</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hits</td>
+<td><code>189</code></td>
+<td><code>0.30434</code></td>
+</tr>
+<tr class="even">
+<td>Lines Drive</td>
+<td><code>92</code></td>
+<td><code>0.14814</code></td>
+</tr>
+<tr class="odd">
+<td>Grounds</td>
+<td><code>229</code></td>
+<td><code>0.36876</code></td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>predict(mlb_model, list(line_average = 0.14814, ground_average = 0.36876, hit_average = 0.30434, lineup_position = 5)) * 621</code></pre>
+<pre><code>##        1 
+## 104.7012</code></pre>
+</div>
+<div id="jose-altuve" class="section level4">
+<h4>Jose Altuve</h4>
+<div class="figure">
+<img src="http://a.espncdn.com/combiner/i?img=/i/headshots/mlb/players/full/31662.png&amp;w=350&amp;h=254" title="J. Altuve" alt="J. Altuve" />
+<p class="caption">J. Altuve</p>
+</div>
+<p>At Bat : <code>590</code></p>
+<p><strong>RBI</strong> : <code>81</code></p>
+<p>Most recurrent line up position : <code>1</code></p>
+<table>
+<thead>
+<tr class="header">
+<th>Variables</th>
+<th>Values</th>
+<th>Average</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hits</td>
+<td><code>204</code></td>
+<td><code>0.32033</code></td>
+</tr>
+<tr class="even">
+<td>Lines Drive</td>
+<td><code>102</code></td>
+<td><code>0.17288</code></td>
+</tr>
+<tr class="odd">
+<td>Grounds</td>
+<td><code>236</code></td>
+<td><code>0.4</code></td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>predict(mlb_model, list(line_average = 0.17288, ground_average = 0.4, hit_average = 0.32033, lineup_position = 1)) * 590</code></pre>
+<pre><code>##       1 
+## 79.4323</code></pre>
+</div>
+<div id="evan-longoria" class="section level4">
+<h4>Evan Longoria</h4>
+<div class="figure">
+<img src="http://a.espncdn.com/combiner/i?img=/i/headshots/mlb/players/full/28639.png&amp;w=350&amp;h=254" title="E. Longoria" alt="E. Longoria" />
+<p class="caption">E. Longoria</p>
+</div>
+<p>At Bat : <code>613</code></p>
+<p><strong>RBI</strong> : <code>86</code></p>
+<p>Most recurrent line up position : <code>3</code></p>
+<table>
+<thead>
+<tr class="header">
+<th>Variables</th>
+<th>Values</th>
+<th>Average</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hits</td>
+<td><code>160</code></td>
+<td><code>0.26101</code></td>
+</tr>
+<tr class="even">
+<td>Lines Drive</td>
+<td><code>102</code></td>
+<td><code>0.16630</code></td>
+</tr>
+<tr class="odd">
+<td>Grounds</td>
+<td><code>236</code></td>
+<td><code>0.36541</code></td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>predict(mlb_model, list(line_average = 0.16630, ground_average = 0.36541, hit_average = 0.26101, lineup_position = 3)) * 613</code></pre>
+<pre><code>##        1 
+## 84.65801</code></pre>
+</div>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
+<p>The predictions for players selected were close to their RBI in 2017. The model works as expected. The baseball game has a lot of stats that can influence our results. I learned we cannot exclude variables we know are important like lineup_position in this case which improved my predictions notably.</p>
+<p>I will keep working on this model to improve it to help coaches to find the perfect fit in their line up.</p>
+</div>
+<div id="references" class="section level1">
+<h1>References</h1>
+<p>Fan Graph - <a href="https://www.fangraphs.com" class="uri">https://www.fangraphs.com</a></p>
+<p>ESPN - <a href="http://www.espn.com/" class="uri">http://www.espn.com/</a></p>
+<p>Retrosheet - <a href="http://www.retrosheet.org/" class="uri">http://www.retrosheet.org/</a></p>
+<p>Baseball Reference - <a href="https://www.baseball-reference.com/" class="uri">https://www.baseball-reference.com/</a></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
