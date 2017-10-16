@@ -52,7 +52,7 @@ This pairs graph show us the correlation between variables. What I expected :
 
  Our model will use the following relation:
  
-Rbi = ($\beta_0$ + $\beta_1$ * hit_average + $\beta_2$ * line_average + $\beta_3$ * ground_average) * AtBat
+Rbi = ($\beta_0$ + $\beta_1$ * hit_average + $\beta_2$ * line_average + $\beta_3$ * ground_average + $\beta_4$ * lineup_position) * AtBat
 
 ```{r}
 mlb_model <- lm(rbi_average ~ hit_average + line_average + ground_average + format(lineup_position), data = mlb_data)

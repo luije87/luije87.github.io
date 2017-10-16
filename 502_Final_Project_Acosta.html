@@ -293,7 +293,7 @@ mlb_data &lt;- data[ , c(&quot;rbi_average&quot;, &quot;hit_average&quot;, &quot
 <li><p>lineup_position and rbi_average shows us positions 3, 4, 5 run batters in more than any other line up position.</p></li>
 </ul>
 <p>Our model will use the following relation:</p>
-<p>Rbi = (<span class="math inline">\(\beta_0\)</span> + <span class="math inline">\(\beta_1\)</span> * hit_average + <span class="math inline">\(\beta_2\)</span> * line_average + <span class="math inline">\(\beta_3\)</span> * ground_average) * AtBat</p>
+<p>Rbi = (<span class="math inline">\(\beta_0\)</span> + <span class="math inline">\(\beta_1\)</span> * hit_average + <span class="math inline">\(\beta_2\)</span> * line_average + <span class="math inline">\(\beta_3\)</span> * ground_average + <span class="math inline">\(\beta_4\)</span> * lineup_position) * AtBat</p>
 <pre class="r"><code>mlb_model &lt;- lm(rbi_average ~ hit_average + line_average + ground_average + format(lineup_position), data = mlb_data)</code></pre>
 <pre class="r"><code>summary(mlb_data)</code></pre>
 <pre><code>##   rbi_average      hit_average      line_average    ground_average  
