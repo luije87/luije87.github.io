@@ -29,7 +29,7 @@ strikeout_average | `Total strike outs divided by at bat`
 lineup_position | `Most recurrent line up position`
 
 ```{r}
-path <- "C:\\Users\\leacosta.STU\\Documents\\project.csv"
+path <- "https://raw.githubusercontent.com/luije87/Big-Data-Analysis/master/project.csv"
 data <- read.csv(path)
 mlb_data <- data[ , c("rbi_average", "hit_average", "line_average", "ground_average", "lineup_position")]
 ```
