@@ -16,7 +16,7 @@ navbar:
         - text: "Hypothesis Testing"
           href: MAT_502_HW_4_Acosta.html
         - text: "Final Project"
-          href: Final_Project_Acosta.html
+          href: 502_Final_Project_Acosta.html
           
 output:
   html_document:
