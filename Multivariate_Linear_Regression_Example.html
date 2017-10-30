@@ -202,6 +202,18 @@ $(document).ready(function () {
     </li>
   </ul>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    544
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Multivariate_Linear_Regression_Example.html">Multivariate Linear Regression</a>
+    </li>
+  </ul>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -317,6 +329,27 @@ socal.water$Forecast &lt;- predict(fit.2)</code></pre>
 <pre class="r"><code>ggplot(data = socal.water, aes(x = Forecast, y = Actual)) + geom_point() + geom_smooth(method = lm) +
   labs( title = &quot;Forecast vs Actual&quot;)</code></pre>
 <p><img src="Multivariate_Linear_Regression_Example_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div id="logistic-regression" class="section level1">
+<h1>Logistic Regression</h1>
+<pre class="r"><code>library(MASS)
+library(tidyverse)
+data(biopsy)
+glimpse(biopsy)</code></pre>
+<pre><code>## Observations: 699
+## Variables: 11
+## $ ID    &lt;chr&gt; &quot;1000025&quot;, &quot;1002945&quot;, &quot;1015425&quot;, &quot;1016277&quot;, &quot;1017023&quot;, &quot;...
+## $ V1    &lt;int&gt; 5, 5, 3, 6, 4, 8, 1, 2, 2, 4, 1, 2, 5, 1, 8, 7, 4, 4, 10...
+## $ V2    &lt;int&gt; 1, 4, 1, 8, 1, 10, 1, 1, 1, 2, 1, 1, 3, 1, 7, 4, 1, 1, 7...
+## $ V3    &lt;int&gt; 1, 4, 1, 8, 1, 10, 1, 2, 1, 1, 1, 1, 3, 1, 5, 6, 1, 1, 7...
+## $ V4    &lt;int&gt; 1, 5, 1, 1, 3, 8, 1, 1, 1, 1, 1, 1, 3, 1, 10, 4, 1, 1, 6...
+## $ V5    &lt;int&gt; 2, 7, 2, 3, 2, 7, 2, 2, 2, 2, 1, 2, 2, 2, 7, 6, 2, 2, 4,...
+## $ V6    &lt;int&gt; 1, 10, 2, 4, 1, 10, 10, 1, 1, 1, 1, 1, 3, 3, 9, 1, 1, 1,...
+## $ V7    &lt;int&gt; 3, 3, 3, 3, 3, 9, 3, 3, 1, 2, 3, 2, 4, 3, 5, 4, 2, 3, 4,...
+## $ V8    &lt;int&gt; 1, 2, 1, 7, 1, 7, 1, 1, 1, 1, 1, 1, 4, 1, 5, 3, 1, 1, 1,...
+## $ V9    &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 5, 1, 1, 1, 1, 1, 4, 1, 1, 1, 2,...
+## $ class &lt;fctr&gt; benign, benign, benign, benign, benign, malignant, beni...</code></pre>
+<pre class="r"><code>biopsy$ID &lt;- NULL</code></pre>
+</div>
 
 
 

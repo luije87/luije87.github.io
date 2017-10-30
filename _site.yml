@@ -17,7 +17,11 @@ navbar:
           href: MAT_502_HW_4_Acosta.html
         - text: "Final Project"
           href: 502_Final_Project_Acosta.html
-          
+    - text: "544"
+      href: assigments.html
+      menu:
+       - text: "Multivariate Linear Regression"
+         href: Multivariate_Linear_Regression_Example.html
 output:
   html_document:
     theme: cosmo
