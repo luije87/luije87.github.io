@@ -22,6 +22,8 @@ navbar:
       menu:
        - text: "Multivariate Linear Regression"
          href: Multivariate_Linear_Regression_Example.html
+       - text: "Homework Number 1"
+         href: 544_HW_1_Acosta.html
 output:
   html_document:
     theme: cosmo
