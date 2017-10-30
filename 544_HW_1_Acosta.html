@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Luis Acosta leacosta@stu.edu" />
+
+
+<title>CIS 544 - Homework Assignment 1</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">MAT-502-11</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Assigments
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="MAT_502_HW_1_Acosta.html">Basic Statistics in R</a>
+    </li>
+    <li>
+      <a href="MAT_502_HW_2_Acosta.html">Getting familiar with R and data</a>
+    </li>
+    <li>
+      <a href="MAT_502_HW_3_Acosta.html">Central Limit Theorem</a>
+    </li>
+    <li>
+      <a href="MAT_502_HW_4_Acosta.html">Hypothesis Testing</a>
+    </li>
+    <li>
+      <a href="502_Final_Project_Acosta.html">Final Project</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">CIS 544 - Homework Assignment 1</h1>
+<h4 class="author"><em>Luis Acosta <a href="mailto:leacosta@stu.edu">leacosta@stu.edu</a></em></h4>
+
+</div>
+
+
+<p>The <code>MASS</code> library contains the Boston data set, which records <code>medv</code> (median house value) for 506 neighborhoods around Boston. We will seek to predict <code>medv</code> using 13 predictors such as <code>rm</code> (average number of rooms per house), <code>age</code> (average age of houses), and <code>lstat</code> (percent of households with low socioeconomic status).</p>
+<p>To find out more about the data set, you can type <code>?Boston</code>. You can check the names of the rest of the variables as follows</p>
+<div id="problem-1" class="section level3">
+<h3>— Problem 1 —</h3>
+<pre class="r"><code>library(MASS)
+library(ggplot2)</code></pre>
+<pre class="r"><code>names(Boston)</code></pre>
+<pre><code>##  [1] &quot;crim&quot;    &quot;zn&quot;      &quot;indus&quot;   &quot;chas&quot;    &quot;nox&quot;     &quot;rm&quot;      &quot;age&quot;    
+##  [8] &quot;dis&quot;     &quot;rad&quot;     &quot;tax&quot;     &quot;ptratio&quot; &quot;black&quot;   &quot;lstat&quot;   &quot;medv&quot;</code></pre>
+<p><strong><em>Problem</em>:</strong> Use the <code>lm()</code> function to fit a <strong>simple linear regression</strong> model, with <code>medv</code> as the response and <code>lstat</code> as the predictor. Create a <strong>summary</strong> of your linear model and comment on the results. Include a <strong>plot</strong> of the data points and the regression line,</p>
+<p><strong><em>Solution</em></strong>:</p>
+<pre class="r"><code>lm.fit &lt;- lm(medv~lstat, data = Boston)</code></pre>
+<pre class="r"><code>summary(lm.fit)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = medv ~ lstat, data = Boston)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -15.168  -3.990  -1.318   2.034  24.500 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 34.55384    0.56263   61.41   &lt;2e-16 ***
+## lstat       -0.95005    0.03873  -24.53   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 6.216 on 504 degrees of freedom
+## Multiple R-squared:  0.5441, Adjusted R-squared:  0.5432 
+## F-statistic: 601.6 on 1 and 504 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p><strong>Plots</strong></p>
+<pre class="r"><code>ggplot(data = Boston, aes(x = Boston$medv, y = Boston$lstat)) + geom_point() + geom_smooth(method = lm) +
+  labs( title = &quot;median value of owner-occupied homes in $1000s Vs lower status of the population&quot;)</code></pre>
+<p><img src="544_HW_1_Acosta_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="problem-2" class="section level3">
+<h3>— Problem 2 —</h3>
+<p><strong><em>Problem</em>:</strong> Using the same dataset from the previous problem, use the <code>lm()</code> function to create a <strong>multiple linear regression</strong>, with <code>medv</code> as the response and <code>lstat</code> and <code>age</code> as the predictors. Create a <strong>summary</strong> of your linear model and comment on the results. Find the <em>correlation</em> between <code>lstat</code> and <code>age</code></p>
+<p><strong><em>Solution</em></strong>:</p>
+<pre class="r"><code>lm.fit2 &lt;- lm(medv~lstat + age, data = Boston)
+summary(lm.fit2)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = medv ~ lstat + age, data = Boston)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -15.981  -3.978  -1.283   1.968  23.158 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 33.22276    0.73085  45.458  &lt; 2e-16 ***
+## lstat       -1.03207    0.04819 -21.416  &lt; 2e-16 ***
+## age          0.03454    0.01223   2.826  0.00491 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 6.173 on 503 degrees of freedom
+## Multiple R-squared:  0.5513, Adjusted R-squared:  0.5495 
+## F-statistic:   309 on 2 and 503 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p><strong>Comments:</strong> <code>age</code> and <code>lstat</code> have small p-values, satitically significant and Adjusted R-squared can explain 54% of variability around the mean</p>
+<p><strong>Correleation</strong></p>
+<pre class="r"><code>lm.fit2_data &lt;- Boston[ , c(&quot;age&quot;, &quot;medv&quot;, &quot;lstat&quot;)]
+pairs(lm.fit2_data, pch=16, col=&quot;red&quot;)</code></pre>
+<p><img src="544_HW_1_Acosta_files/figure-html/unnamed-chunk-7-1.png" width="672" /> <strong>Comments:</strong></p>
+<p>We can observe a strong positive correlation between <code>age</code> and <code>lstat</code>:</p>
+<pre class="r"><code>cor(Boston$age, Boston$lstat)</code></pre>
+<pre><code>## [1] 0.6023385</code></pre>
+</div>
+<div id="problem-3" class="section level3">
+<h3>— Problem 3 —</h3>
+<p>In this problem we investigate the effect of <strong>non-linear transformations of the predictors</strong>.</p>
+<p>Given a predictor <span class="math inline">\(X\)</span>, we can create a predictor <span class="math inline">\(X^2\)</span> using <code>I(X^2)</code>. The function <code>I()</code> is needed since the <code>^</code> has a special meaning in a formula; wrapping as we do allows the standard usage in <code>R</code>, which is <code>I()</code> to raise <code>X</code> to the power <code>2</code>.</p>
+<ul>
+<li>Perform a regression of <code>medv</code> onto <code>lstat</code> and <code>lstat^2</code>.</li>
+</ul>
+<p><strong><em>Solution</em></strong>:</p>
+<pre class="r"><code>quadFit &lt;- lm(medv~lstat+I(lstat^2), data = Boston)</code></pre>
+<pre class="r"><code>summary(quadFit)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = medv ~ lstat + I(lstat^2), data = Boston)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -15.2834  -3.8313  -0.5295   2.3095  25.4148 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 42.862007   0.872084   49.15   &lt;2e-16 ***
+## lstat       -2.332821   0.123803  -18.84   &lt;2e-16 ***
+## I(lstat^2)   0.043547   0.003745   11.63   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 5.524 on 503 degrees of freedom
+## Multiple R-squared:  0.6407, Adjusted R-squared:  0.6393 
+## F-statistic: 448.5 on 2 and 503 DF,  p-value: &lt; 2.2e-16</code></pre>
+<ul>
+<li>Is this an <strong>improved</strong> model from the one in Problem 1? (Hint: check the <span class="math inline">\(p\)</span> values, <span class="math inline">\(R^2\)</span> values, or perform an ANOVA test between the two models)</li>
+</ul>
+<p><strong>Comments:</strong></p>
+<ul>
+<li><p>It is an improved model, Adjusted R-Squared increases from 54 % to 63%, we can explain 63 % of variability around the mean.</p></li>
+<li><p>p-values are small, statistically significant.</p></li>
+</ul>
+</div>
+<div id="problem-4" class="section level3">
+<h3>— Problem 4 —</h3>
+<p>This question involves the use of simple linear regression on the <code>Auto</code> data set from the <code>ISLR</code> package. (you can install that package by typing in the console: <code>install.packages(&quot;ISLR&quot;)</code>)</p>
+<pre class="r"><code>library(ISLR)
+data(Auto)
+str(Auto)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    392 obs. of  9 variables:
+##  $ mpg         : num  18 15 18 16 17 15 14 14 14 15 ...
+##  $ cylinders   : num  8 8 8 8 8 8 8 8 8 8 ...
+##  $ displacement: num  307 350 318 304 302 429 454 440 455 390 ...
+##  $ horsepower  : num  130 165 150 150 140 198 220 215 225 190 ...
+##  $ weight      : num  3504 3693 3436 3433 3449 ...
+##  $ acceleration: num  12 11.5 11 12 10.5 10 9 8.5 10 8.5 ...
+##  $ year        : num  70 70 70 70 70 70 70 70 70 70 ...
+##  $ origin      : num  1 1 1 1 1 1 1 1 1 1 ...
+##  $ name        : Factor w/ 304 levels &quot;amc ambassador brougham&quot;,..: 49 36 231 14 161 141 54 223 241 2 ...</code></pre>
+<ul>
+<li><p>Use the <code>lm()</code> function to perform a simple linear regression with <code>mpg</code> as the response and <code>horsepower</code> as the predictor.</p></li>
+<li>Use the <code>summary()</code> function to print the results. Comment on the output. For example:
+<ul>
+<li><p>Is there a relationship between the predictor and the response?</p></li>
+<li><p>How strong is the relationship between the predictor and the response?</p></li>
+<li><p>What is the predicted <code>mpg</code> associated with a <code>horsepower</code> of 98?</p></li>
+</ul></li>
+</ul>
+<p><strong><em>Solution</em></strong>:</p>
+<p>Simple linear regression model</p>
+<pre class="r"><code>lm.auto &lt;- lm(mpg ~ horsepower, data = Auto)</code></pre>
+<pre class="r"><code>summary(lm.auto)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = mpg ~ horsepower, data = Auto)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -13.5710  -3.2592  -0.3435   2.7630  16.9240 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 39.935861   0.717499   55.66   &lt;2e-16 ***
+## horsepower  -0.157845   0.006446  -24.49   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 4.906 on 390 degrees of freedom
+## Multiple R-squared:  0.6059, Adjusted R-squared:  0.6049 
+## F-statistic: 599.7 on 1 and 390 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>p-value for <code>horsepower</code> is significant and Adjusted R-squared is 0.6049 which mean, we can explain 60% of variablity.</p>
+<p>The predictor <code>mpg</code> and the response <code>horsepower</code> have a strong negative correlation.</p>
+<pre class="r"><code>auto.plot &lt;- Auto[ , c(&quot;horsepower&quot;, &quot;mpg&quot;)]
+pairs(auto.plot, pch=16, col=&quot;red&quot;)</code></pre>
+<p><img src="544_HW_1_Acosta_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<pre class="r"><code>cor(Auto$mpg, Auto$horsepower)</code></pre>
+<pre><code>## [1] -0.7784268</code></pre>
+<p>Predicted <code>mpg</code> value for a car with <code>horsepower</code> equal 98</p>
+<pre class="r"><code>predict(lm.auto, list(horsepower = 98))</code></pre>
+<pre><code>##        1 
+## 24.46708</code></pre>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

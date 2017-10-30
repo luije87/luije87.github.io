@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>R Notebook</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">MAT-502-11</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Assigments
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="MAT_502_HW_1_Acosta.html">Basic Statistics in R</a>
+    </li>
+    <li>
+      <a href="MAT_502_HW_2_Acosta.html">Getting familiar with R and data</a>
+    </li>
+    <li>
+      <a href="MAT_502_HW_3_Acosta.html">Central Limit Theorem</a>
+    </li>
+    <li>
+      <a href="MAT_502_HW_4_Acosta.html">Hypothesis Testing</a>
+    </li>
+    <li>
+      <a href="502_Final_Project_Acosta.html">Final Project</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">R Notebook</h1>
+
+</div>
+
+
+<pre class="r"><code>library(alr3)
+library(tidyverse)</code></pre>
+<pre class="r"><code>data(water)
+str(water)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    43 obs. of  8 variables:
+##  $ Year   : int  1948 1949 1950 1951 1952 1953 1954 1955 1956 1957 ...
+##  $ APMAM  : num  9.13 5.28 4.2 4.6 7.15 9.7 5.02 6.7 10.5 9.1 ...
+##  $ APSAB  : num  3.58 4.82 3.77 4.46 4.99 5.65 1.45 7.44 5.85 6.13 ...
+##  $ APSLAKE: num  3.91 5.2 3.67 3.93 4.88 4.91 1.77 6.51 3.38 4.08 ...
+##  $ OPBPC  : num  4.1 7.55 9.52 11.14 16.34 ...
+##  $ OPRC   : num  7.43 11.11 12.2 15.15 20.05 ...
+##  $ OPSLAKE: num  6.47 10.26 11.35 11.13 22.81 ...
+##  $ BSAAM  : int  54235 67567 66161 68094 107080 67594 65356 67909 92715 70024 ...</code></pre>
+<pre class="r"><code>socal.water &lt;- water[ , -1]</code></pre>
+<p>Correlations:</p>
+<pre class="r"><code>water.cor &lt;- cor(socal.water)
+water.cor</code></pre>
+<pre><code>##             APMAM      APSAB    APSLAKE      OPBPC      OPRC    OPSLAKE
+## APMAM   1.0000000 0.82768637 0.81607595 0.12238567 0.1544155 0.10754212
+## APSAB   0.8276864 1.00000000 0.90030474 0.03954211 0.1056396 0.02961175
+## APSLAKE 0.8160760 0.90030474 1.00000000 0.09344773 0.1063836 0.10058669
+## OPBPC   0.1223857 0.03954211 0.09344773 1.00000000 0.8647073 0.94334741
+## OPRC    0.1544155 0.10563959 0.10638359 0.86470733 1.0000000 0.91914467
+## OPSLAKE 0.1075421 0.02961175 0.10058669 0.94334741 0.9191447 1.00000000
+## BSAAM   0.2385695 0.18329499 0.24934094 0.88574778 0.9196270 0.93843604
+##             BSAAM
+## APMAM   0.2385695
+## APSAB   0.1832950
+## APSLAKE 0.2493409
+## OPBPC   0.8857478
+## OPRC    0.9196270
+## OPSLAKE 0.9384360
+## BSAAM   1.0000000</code></pre>
+<pre class="r"><code>pairs(socal.water)</code></pre>
+<p><img src="Multivariate_Linear_Regression_Example_files/figure-html/unnamed-chunk-5-1.png" width="672" /> ## Modeling and Evaluation</p>
+<pre class="r"><code>library(leaps)</code></pre>
+<pre class="r"><code>attach(socal.water)</code></pre>
+<pre class="r"><code>fit &lt;- lm(BSAAM ~ ., data = socal.water)
+summary(fit)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = BSAAM ~ ., data = socal.water)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -12690  -4936  -1424   4173  18542 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 15944.67    4099.80   3.889 0.000416 ***
+## APMAM         -12.77     708.89  -0.018 0.985725    
+## APSAB        -664.41    1522.89  -0.436 0.665237    
+## APSLAKE      2270.68    1341.29   1.693 0.099112 .  
+## OPBPC          69.70     461.69   0.151 0.880839    
+## OPRC         1916.45     641.36   2.988 0.005031 ** 
+## OPSLAKE      2211.58     752.69   2.938 0.005729 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 7557 on 36 degrees of freedom
+## Multiple R-squared:  0.9248, Adjusted R-squared:  0.9123 
+## F-statistic: 73.82 on 6 and 36 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre class="r"><code>sub.fit &lt;- regsubsets(BSAAM ~ ., data = socal.water)</code></pre>
+<pre class="r"><code>best.summary &lt;- summary(sub.fit)</code></pre>
+<pre class="r"><code># split the plotting window in a grid of one by two
+par(mfrow = c(1,2))
+plot(best.summary$cp, xlab = &quot;number of features&quot;, ylab = &quot;cp&quot;)
+plot(sub.fit, scale = &quot;Cp&quot;)</code></pre>
+<p><img src="Multivariate_Linear_Regression_Example_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<pre class="r"><code>best.summary$adjr2</code></pre>
+<pre><code>## [1] 0.8777515 0.9001619 0.9185369 0.9168706 0.9146772 0.9123079</code></pre>
+<pre class="r"><code>fit.2 &lt;- lm(BSAAM ~ APSLAKE + OPSLAKE, data = socal.water)
+summary(fit.2)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = BSAAM ~ APSLAKE + OPSLAKE, data = socal.water)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -13335.8  -5893.2   -171.8   4219.5  19500.2 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  19144.9     3812.0   5.022  1.1e-05 ***
+## APSLAKE       1768.8      553.7   3.194  0.00273 ** 
+## OPSLAKE       3689.5      196.0  18.829  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 8063 on 40 degrees of freedom
+## Multiple R-squared:  0.9049, Adjusted R-squared:  0.9002 
+## F-statistic: 190.3 on 2 and 40 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre class="r"><code>socal.water[&quot;Actual&quot;] &lt;- water$BSAAM
+
+socal.water$Forecast &lt;- predict(fit.2)</code></pre>
+<pre class="r"><code>ggplot(data = socal.water, aes(x = Forecast, y = Actual)) + geom_point() + geom_smooth(method = lm) +
+  labs( title = &quot;Forecast vs Actual&quot;)</code></pre>
+<p><img src="Multivariate_Linear_Regression_Example_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

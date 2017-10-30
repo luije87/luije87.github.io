@@ -1,0 +1,150 @@
+---
+title: "CIS 544 - Homework Assignment 1"
+author: "Luis Acosta leacosta@stu.edu"
+---
+
+The `MASS` library contains the Boston data set, which records `medv` (median house value) for 506 neighborhoods around Boston. We will seek to predict `medv` using 13 predictors such as `rm` (average number of rooms per house), `age` (average age of houses), and `lstat` (percent of households with low socioeconomic status).
+
+To find out more about the data set, you can type `?Boston`. You can check the names of the rest of the variables as follows
+
+### --- Problem 1 ---
+
+```{r}
+library(MASS)
+library(ggplot2)
+```
+
+```{r}
+names(Boston)
+```
+
+
+**_Problem_:** Use the `lm()` function to fit a **simple linear regression**
+model, with `medv` as the response and `lstat` as the predictor. Create a **summary** of your linear model and comment on the results. Include a **plot** of the data points and the regression line,
+
+
+**_Solution_**: 
+
+```{r}
+lm.fit <- lm(medv~lstat, data = Boston)
+```
+
+```{r}
+summary(lm.fit)
+```
+**Plots**
+
+```{r}
+ggplot(data = Boston, aes(x = Boston$medv, y = Boston$lstat)) + geom_point() + geom_smooth(method = lm) +
+  labs( title = "median value of owner-occupied homes in $1000s Vs lower status of the population")
+```
+
+
+
+### --- Problem 2 ---
+
+**_Problem_:** Using the same dataset from the previous problem, use the `lm()` function to create a **multiple linear regression**, with `medv` as the response and `lstat` and `age` as the predictors. Create a **summary** of your linear model and comment on the results. Find the _correlation_ between `lstat` and `age`
+
+**_Solution_**: 
+
+```{r}
+lm.fit2 <- lm(medv~lstat + age, data = Boston)
+summary(lm.fit2)
+```
+
+**Comments:**
+`age` and `lstat` have small p-values, satitically significant and Adjusted R-squared can explain 54% of variability around the mean
+
+
+**Correleation**
+
+```{r}
+lm.fit2_data <- Boston[ , c("age", "medv", "lstat")]
+pairs(lm.fit2_data, pch=16, col="red")
+```
+**Comments:**
+
+We can observe a strong positive correlation between `age` and `lstat`:
+
+```{r}
+cor(Boston$age, Boston$lstat)
+```
+
+
+### --- Problem 3 ---
+
+In this problem we investigate the effect of **non-linear transformations of the predictors**.
+
+Given a predictor $X$, we can create a predictor $X^2$ using `I(X^2)`. The function `I()` is needed since the `^` has a special meaning in a formula; wrapping as we do allows the standard usage in `R`, which is `I()` to raise `X` to the power `2`. 
+
+- Perform a regression of `medv` onto `lstat` and `lstat^2`. 
+
+**_Solution_**: 
+
+```{r}
+quadFit <- lm(medv~lstat+I(lstat^2), data = Boston)
+```
+
+```{r}
+summary(quadFit)
+```
+
+- Is this an **improved** model from the one in Problem 1? (Hint: check the $p$ values, $R^2$ values, or perform an ANOVA test between the two models)
+
+**Comments:**
+
+- It is an improved model, Adjusted R-Squared increases from 54 % to 63%, we can explain 63 % of variability around the mean.
+
+- p-values are small, statistically significant.
+
+### --- Problem 4 ---
+
+This question involves the use of simple linear regression on the `Auto` data set from the `ISLR` package. (you can install that package by typing in the console: `install.packages("ISLR")`)
+
+```{r}
+library(ISLR)
+data(Auto)
+str(Auto)
+```
+
+* Use the `lm()` function to perform a simple linear regression with `mpg` as the response and `horsepower` as the predictor. 
+
+* Use the `summary()` function to print the results. Comment on the output. For example: 
+    + Is there a relationship between the predictor and the response? 
+    
+    + How strong is the relationship between the predictor and the response? 
+    
+    + What is the predicted `mpg` associated with a `horsepower` of 98?
+
+ 
+**_Solution_**: 
+
+Simple linear regression model
+
+```{r}
+lm.auto <- lm(mpg ~ horsepower, data = Auto)
+```
+
+```{r}
+summary(lm.auto)
+```
+p-value for `horsepower` is significant and Adjusted R-squared is 0.6049 which mean, we can explain 60% of variablity.
+
+The predictor `mpg` and the response `horsepower` have a strong negative correlation.
+
+```{r}
+auto.plot <- Auto[ , c("horsepower", "mpg")]
+pairs(auto.plot, pch=16, col="red")
+```
+
+```{r}
+cor(Auto$mpg, Auto$horsepower)
+```
+
+
+Predicted `mpg` value for a car with `horsepower` equal 98
+
+```{r}
+predict(lm.auto, list(horsepower = 98))
+```
+

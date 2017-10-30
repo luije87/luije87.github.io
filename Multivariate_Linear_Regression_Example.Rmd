@@ -1,0 +1,99 @@
+---
+title: "R Notebook"
+---
+
+
+```{r message=FALSE}
+library(alr3)
+library(tidyverse)
+```
+
+```{r}
+data(water)
+str(water)
+
+```
+
+
+```{r}
+socal.water <- water[ , -1]
+```
+
+Correlations:
+
+```{r}
+water.cor <- cor(socal.water)
+water.cor
+```
+
+```{r}
+pairs(socal.water)
+```
+## Modeling and Evaluation
+
+```{r}
+library(leaps)
+```
+
+```{r message=FALSE}
+attach(socal.water)
+```
+
+```{r}
+fit <- lm(BSAAM ~ ., data = socal.water)
+summary(fit)
+```
+
+```{r}
+sub.fit <- regsubsets(BSAAM ~ ., data = socal.water)
+```
+
+```{r}
+best.summary <- summary(sub.fit)
+```
+
+```{r}
+# split the plotting window in a grid of one by two
+par(mfrow = c(1,2))
+plot(best.summary$cp, xlab = "number of features", ylab = "cp")
+plot(sub.fit, scale = "Cp")
+```
+
+```{r}
+best.summary$adjr2
+```
+
+```{r}
+fit.2 <- lm(BSAAM ~ APSLAKE + OPSLAKE, data = socal.water)
+summary(fit.2)
+```
+
+```{r}
+socal.water["Actual"] <- water$BSAAM
+
+socal.water$Forecast <- predict(fit.2)
+```
+
+```{r}
+ggplot(data = socal.water, aes(x = Forecast, y = Actual)) + geom_point() + geom_smooth(method = lm) +
+  labs( title = "Forecast vs Actual")
+
+```
+
+# Logistic Regression
+```{r}
+library(MASS)
+library(tidyverse)
+data(biopsy)
+glimpse(biopsy)
+
+```
+
+```{r}
+biopsy$ID <- NULL
+```
+
+```{r}
+
+```
+
