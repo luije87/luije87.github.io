@@ -24,9 +24,9 @@ navbar:
          href: Multivariate_Linear_Regression_Example.html
        - text: "Homework Number 1"
          href: 544_HW_1_Acosta.html
-       - text: "Homework Number 4"
+       - text: "Homework Number 4 - Decision Trees"
          href: 544_HW_4_Acosta.html
-       - text: "Homework Number 5"
+       - text: "Homework Number 5 - Clustering"
          href: 544_HW_5_Acosta.html
 output:
   html_document:
