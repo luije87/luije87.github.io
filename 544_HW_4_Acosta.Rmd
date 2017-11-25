@@ -1,0 +1,192 @@
+---
+title: "R Notebook Homework 4"
+author: "Luis Acosta"
+---
+
+#Problem 1
+
+```{r}
+library(rpart)          #classification and regression trees
+library(partykit)       #treeplots
+library(MASS)           #breast and pima indian data
+library(ElemStatLearn)  #prostate data
+library(randomForest)   #random forests
+library(xgboost)        #gradient boosting 
+library(caret)          #tune hyper-parameters
+library(rattle)         #Fancy
+library(rpart.plot)     #Enhanced 
+library(RColorBrewer)   #Color
+library(party)          #Alternative decision tree algorithm
+```
+
+```{r}
+attach(iris)
+```
+
+
+```{r}
+names(iris)
+```
+
+```{r}
+set.seed(123)
+tree.iris <- rpart(Species ~ Sepal.Width  + Petal.Width, data = iris)
+print(tree.iris$cptable)
+```
+
+```{r}
+cp1 <- min(tree.iris$cptable[3, ])
+prune.tree.iris <-  prune(tree.iris, cp <- cp1)
+plot(as.party(prune.tree.iris))
+```
+
+```{r}
+rparty.test <- predict(prune.tree.iris, newdata = iris, type = "class")
+table(rparty.test, iris$Species)
+```
+
+```{r}
+(50+49+45)/(50+49+45+6)
+```
+
+Missclasification error equal to 4%
+
+```{r}
+pairs(iris[, c("Sepal.Width", "Petal.Width")],pch=21,bg=c("red","green","blue")[unclass(Species)])
+```
+
+ - The red group is well defined, every data below 0.8 belong to the red group. In the tree when `Petal.Width` is below 0.8 does not exist missclasification.
+ 
+ 
+ - The green group is well defined, but we have 5 data point from blue group mixed when `Petal.Width` is greater than 0.8 and samller than 1.75, in the tree we can see virginica representing this five values.
+ 
+ 
+ - The blue group is well defined as well when `Petal.Width` is grater or equal 1.75, but we have 1 Versicolor data point mixed with the this group as we can see in the tree.
+ 
+
+Q: Build a decision tree where Species is a function of all variables Sepal.Width, Petal.Width, Sepal.Length, and Sepal.Length. Plot the tree. Comment on the misclassification rate in this new tree.
+
+```{r}
+tree.iris2 <- rpart(Species ~ ., data = iris)
+```
+
+```{r}
+cp2 <- min(tree.iris2$cptable[3, ])
+prune.tree.iris2 <-  prune(tree.iris2, cp <- cp2)
+plot(as.party(prune.tree.iris2))
+```
+
+```{r}
+rparty.test2 <- predict(prune.tree.iris2, newdata = iris, type = "class")
+table(rparty.test2, iris$Species)
+```
+
+```{r}
+(50+49+45)/(50+49+45+6)
+```
+
+Missclasification error is equal to 4%, same result we had with `Petal.Width` and `Speal.Width` variables.
+
+#Problem 2
+
+```{r}
+library(MASS)
+attach(Pima.te)
+```
+
+```{r}
+pima <- Pima.te
+set.seed(123) #random number generator
+#create training and testing sets
+ind <- sample(2, nrow(pima), replace = TRUE, prob = c(0.7, 0.3))
+pima.train <- pima[ind == 1, ] #the training data set
+pima.test <- pima[ind == 2, ] #the test data set
+```
+
+
+```{r}
+set.seed(123)
+rf.pima <- randomForest(type ~ ., data = pima.train)
+rf.pima
+```
+
+The OOB error rate is 21.94% which is pretty hihg when we are talking about deseas.
+
+```{r}
+plot(rf.pima)
+```
+
+```{r}
+ntree <- which.min(rf.pima$err.rate[, 1])
+ntree
+```
+
+We need  64 trees to optimize the model accuracy
+
+```{r}
+rf.pima.2 <- randomForest(type ~ ., data = pima.train, ntree = ntree)
+rf.pima.2
+```
+
+```{r}
+rf.pima.predict <- predict(rf.pima.2, newdata = pima.test, type = "response")
+table(rf.pima.predict, pima.test$type)
+```
+
+```{r}
+(56+15)/(56+15+11+13)
+```
+
+The accuracy is 74%
+
+```{r}
+varImpPlot(rf.pima.2)
+```
+
+
+#Problem 3
+
+```{r}
+library(ISLR)
+attach(Carseats)
+```
+
+
+```{r}
+data(Carseats)
+High <- with(Carseats, ifelse(Sales <= 8, "No", "Yes"))
+Carseats <- data.frame(Carseats, High)
+```
+
+
+```{r}
+set.seed(217)
+
+#create training and testing sets
+ind3 <- sample(2, nrow(Carseats), replace = TRUE, prob = c(0.7, 0.3))
+carseats.train <- Carseats[ind3 == 1, ]
+carseats.test <- Carseats[ind3 == 2, ]
+```
+
+```{r}
+set.seed(123)
+tree.carseats <- rpart(High ~ .-Sales, data = carseats.train)
+tree.carseats$cptable
+```
+
+```{r}
+cp3 <- min(tree.carseats$cptable[7, ])
+prune.tree.carseats <-  prune(tree.carseats, cp <- cp3)
+fancyRpartPlot(prune.tree.carseats)
+```
+
+```{r}
+rparty.test3 <- predict(prune.tree.carseats, newdata = carseats.test, type = "class")
+table(rparty.test3, carseats.test$High)
+```
+
+The accuracy we get here is
+
+```{r}
+(65+32)/(65+32+14)
+```

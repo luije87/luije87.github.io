@@ -1,0 +1,124 @@
+---
+title: "Homework 5"
+author: "Luis Acosta"
+---
+
+```{r}
+library(tidyverse)
+hwlink <- "https://raw.githubusercontent.com/reisanar/datasets/master/clusterThis.csv"
+hwdata <- read_csv(hwlink)
+```
+
+
+
+# Problem 1 : K-means
+
+
+```{r}
+ggplot(hwdata, aes(x=x,y=y)) + geom_point()
+```
+- Do you see any type of clusters/groups right away?
+
+2 groups
+
+- Use k-means to try to find two (2) clusters in this dataset. Use the base R function kmeans():
+
+```{r}
+km_clusterThis <- kmeans(hwdata[, c("y", "x")], centers = 2)
+```
+
+
+```{r}
+str(km_clusterThis)
+```
+
+- Plot the points again colored by the associated cluster found in the previous step
+
+```{r}
+km_results <- as.factor(km_clusterThis$cluster)
+```
+
+```{r}
+ggplot(hwdata, aes(x=x,y=y, color = km_results)) + geom_point()
+```
+
+
+#Problem 2: Hierarchical clustering
+
+
+- Use hierarchical clustering (with a single linkage) to try to find the groups in this dataset. You can use the hclust() function from base R.
+
+```{r}
+dis <- dist(hwdata[, c("x", "y")])
+hc_hwdata <- hclust(dis, method = "single")
+```
+
+
+```{r}
+str(hc_hwdata)
+```
+
+- Cut the dendrogram tree to 2 clusters using the cutree() function
+
+```{r}
+cut2 <- cutree(hc_hwdata, 2)
+```
+
+```{r}
+hc_result <- as.factor(cut2)
+```
+
+- Plot the points with this new cluster assignment:
+ 
+```{r}
+ggplot(hwdata, aes(x=x,y=y, color = hc_result)) + geom_point()
+```
+
+
+#Problem 2: Data Transformation
+
+- We can use a transformation on the data set to help with the clustering problem. For example, transforming the data into polar coordinates,might be a good idea in this case.
+
+```{r}
+polar <- hwdata %>% transform(r = sqrt(x^2 + y^2), theta=atan(y/x))
+```
+
+```{r}
+km_polar <- kmeans(polar[, c("r", "theta")], centers = 2)
+```
+
+
+- Plot the points again with this new assignment of clusters:
+
+```{r}
+str(km_polar)
+```
+
+```{r}
+km_results2 <- as.factor(km_polar$cluster)
+```
+
+
+```{r}
+ggplot(polar, aes(x=r,y=theta, color = km_results2)) + geom_point()
+```
+
+
+- Is this a better cluster assignment with k-means than from problem 1?
+
+I think the transformation performs an improved separation of clusters. In problem number 1, groups are very close at some points and in this case, we can identify clearly two groups. In case the groups are customers, a marketing campaign can give us better results.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

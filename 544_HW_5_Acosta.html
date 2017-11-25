@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Luis Acosta" />
+
+
+<title>Homework 5</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">MAT-502-11</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Assigments
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="MAT_502_HW_1_Acosta.html">Basic Statistics in R</a>
+    </li>
+    <li>
+      <a href="MAT_502_HW_2_Acosta.html">Getting familiar with R and data</a>
+    </li>
+    <li>
+      <a href="MAT_502_HW_3_Acosta.html">Central Limit Theorem</a>
+    </li>
+    <li>
+      <a href="MAT_502_HW_4_Acosta.html">Hypothesis Testing</a>
+    </li>
+    <li>
+      <a href="502_Final_Project_Acosta.html">Final Project</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    544
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Multivariate_Linear_Regression_Example.html">Multivariate Linear Regression</a>
+    </li>
+    <li>
+      <a href="544_HW_1_Acosta.html">Homework Number 1</a>
+    </li>
+    <li>
+      <a href="544_HW_4_Acosta.html">Homework Number 4</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Homework 5</h1>
+<h4 class="author"><em>Luis Acosta</em></h4>
+
+</div>
+
+
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## -- Attaching packages ----------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## v tibble  1.3.4     v purrr   0.2.4
+## v tidyr   0.7.2     v dplyr   0.7.4
+## v readr   1.1.1     v stringr 1.2.0
+## v tibble  1.3.4     v forcats 0.2.0</code></pre>
+<pre><code>## -- Conflicts -------------------------------------------------------------------- tidyverse_conflicts() --
+## x stringr::boundary()    masks strucchange::boundary()
+## x dplyr::combine()       masks randomForest::combine()
+## x dplyr::filter()        masks stats::filter()
+## x dplyr::lag()           masks stats::lag()
+## x purrr::lift()          masks caret::lift()
+## x randomForest::margin() masks ggplot2::margin()
+## x dplyr::select()        masks MASS::select()
+## x dplyr::slice()         masks xgboost::slice()</code></pre>
+<pre class="r"><code>hwlink &lt;- &quot;https://raw.githubusercontent.com/reisanar/datasets/master/clusterThis.csv&quot;
+hwdata &lt;- read_csv(hwlink)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   x = col_double(),
+##   y = col_double()
+## )</code></pre>
+<div id="problem-1-k-means" class="section level1">
+<h1>Problem 1 : K-means</h1>
+<pre class="r"><code>ggplot(hwdata, aes(x=x,y=y)) + geom_point()</code></pre>
+<p><img src="544_HW_5_Acosta_files/figure-html/unnamed-chunk-2-1.png" width="672" /> - Do you see any type of clusters/groups right away?</p>
+<p>2 groups</p>
+<ul>
+<li>Use k-means to try to find two (2) clusters in this dataset. Use the base R function kmeans():</li>
+</ul>
+<pre class="r"><code>km_clusterThis &lt;- kmeans(hwdata[, c(&quot;y&quot;, &quot;x&quot;)], centers = 2)</code></pre>
+<pre class="r"><code>str(km_clusterThis)</code></pre>
+<pre><code>## List of 9
+##  $ cluster     : int [1:500] 2 2 2 2 2 1 2 1 2 2 ...
+##  $ centers     : num [1:2, 1:2] -2.278 1.332 1.298 -0.831
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:2] &quot;1&quot; &quot;2&quot;
+##   .. ..$ : chr [1:2] &quot;y&quot; &quot;x&quot;
+##  $ totss       : num 6676
+##  $ withinss    : num [1:2] 1875 2712
+##  $ tot.withinss: num 4587
+##  $ betweenss   : num 2089
+##  $ size        : int [1:2] 195 305
+##  $ iter        : int 1
+##  $ ifault      : int 0
+##  - attr(*, &quot;class&quot;)= chr &quot;kmeans&quot;</code></pre>
+<ul>
+<li>Plot the points again colored by the associated cluster found in the previous step</li>
+</ul>
+<pre class="r"><code>km_results &lt;- as.factor(km_clusterThis$cluster)</code></pre>
+<pre class="r"><code>ggplot(hwdata, aes(x=x,y=y, color = km_results)) + geom_point()</code></pre>
+<p><img src="544_HW_5_Acosta_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="problem-2-hierarchical-clustering" class="section level1">
+<h1>Problem 2: Hierarchical clustering</h1>
+<ul>
+<li>Use hierarchical clustering (with a single linkage) to try to find the groups in this dataset. You can use the hclust() function from base R.</li>
+</ul>
+<pre class="r"><code>dis &lt;- dist(hwdata[, c(&quot;x&quot;, &quot;y&quot;)])
+hc_hwdata &lt;- hclust(dis, method = &quot;single&quot;)</code></pre>
+<pre class="r"><code>str(hc_hwdata)</code></pre>
+<pre><code>## List of 7
+##  $ merge      : int [1:499, 1:2] -113 -295 -83 -159 -64 -261 -371 -68 -193 -65 ...
+##  $ height     : num [1:499] 0.0132 0.0134 0.0176 0.0197 0.0197 ...
+##  $ order      : int [1:500] 277 444 279 483 293 473 362 391 460 478 ...
+##  $ labels     : NULL
+##  $ method     : chr &quot;single&quot;
+##  $ call       : language hclust(d = dis, method = &quot;single&quot;)
+##  $ dist.method: chr &quot;euclidean&quot;
+##  - attr(*, &quot;class&quot;)= chr &quot;hclust&quot;</code></pre>
+<ul>
+<li>Cut the dendrogram tree to 2 clusters using the cutree() function</li>
+</ul>
+<pre class="r"><code>cut2 &lt;- cutree(hc_hwdata, 2)</code></pre>
+<pre class="r"><code>hc_result &lt;- as.factor(cut2)</code></pre>
+<ul>
+<li>Plot the points with this new cluster assignment:</li>
+</ul>
+<pre class="r"><code>ggplot(hwdata, aes(x=x,y=y, color = hc_result)) + geom_point()</code></pre>
+<p><img src="544_HW_5_Acosta_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+<div id="problem-2-data-transformation" class="section level1">
+<h1>Problem 2: Data Transformation</h1>
+<ul>
+<li>We can use a transformation on the data set to help with the clustering problem. For example, transforming the data into polar coordinates,might be a good idea in this case.</li>
+</ul>
+<pre class="r"><code>polar &lt;- hwdata %&gt;% transform(r = sqrt(x^2 + y^2), theta=atan(y/x))</code></pre>
+<pre class="r"><code>km_polar &lt;- kmeans(polar[, c(&quot;r&quot;, &quot;theta&quot;)], centers = 2)</code></pre>
+<ul>
+<li>Plot the points again with this new assignment of clusters:</li>
+</ul>
+<pre class="r"><code>str(km_polar)</code></pre>
+<pre><code>## List of 9
+##  $ cluster     : int [1:500] 2 2 2 2 2 2 2 2 2 2 ...
+##  $ centers     : num [1:2, 1:2] 4.95508 1.1842 0.03064 -0.00852
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:2] &quot;1&quot; &quot;2&quot;
+##   .. ..$ : chr [1:2] &quot;r&quot; &quot;theta&quot;
+##  $ totss       : num 2324
+##  $ withinss    : num [1:2] 241 306
+##  $ tot.withinss: num 547
+##  $ betweenss   : num 1777
+##  $ size        : int [1:2] 253 247
+##  $ iter        : int 1
+##  $ ifault      : int 0
+##  - attr(*, &quot;class&quot;)= chr &quot;kmeans&quot;</code></pre>
+<pre class="r"><code>km_results2 &lt;- as.factor(km_polar$cluster)</code></pre>
+<pre class="r"><code>ggplot(polar, aes(x=r,y=theta, color = km_results2)) + geom_point()</code></pre>
+<p><img src="544_HW_5_Acosta_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<ul>
+<li>Is this a better cluster assignment with k-means than from problem 1?</li>
+</ul>
+<p>I think the transformation performs an improved separation of clusters. In problem number 1, groups are very close at some points and in this case, we can identify clearly two groups. In case the groups are customers, a marketing campaign can give us better results.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

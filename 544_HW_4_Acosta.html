@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Luis Acosta" />
+
+
+<title>R Notebook Homework 4</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">MAT-502-11</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Assigments
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="MAT_502_HW_1_Acosta.html">Basic Statistics in R</a>
+    </li>
+    <li>
+      <a href="MAT_502_HW_2_Acosta.html">Getting familiar with R and data</a>
+    </li>
+    <li>
+      <a href="MAT_502_HW_3_Acosta.html">Central Limit Theorem</a>
+    </li>
+    <li>
+      <a href="MAT_502_HW_4_Acosta.html">Hypothesis Testing</a>
+    </li>
+    <li>
+      <a href="502_Final_Project_Acosta.html">Final Project</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    544
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Multivariate_Linear_Regression_Example.html">Multivariate Linear Regression</a>
+    </li>
+    <li>
+      <a href="544_HW_1_Acosta.html">Homework Number 1</a>
+    </li>
+    <li>
+      <a href="544_HW_4_Acosta.html">Homework Number 4</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">R Notebook Homework 4</h1>
+<h4 class="author"><em>Luis Acosta</em></h4>
+
+</div>
+
+
+<div id="problem-1" class="section level1">
+<h1>Problem 1</h1>
+<pre class="r"><code>library(rpart)          #classification and regression trees
+library(partykit)       #treeplots</code></pre>
+<pre><code>## Loading required package: grid</code></pre>
+<pre class="r"><code>library(MASS)           #breast and pima indian data
+library(ElemStatLearn)  #prostate data
+library(randomForest)   #random forests</code></pre>
+<pre><code>## randomForest 4.6-12</code></pre>
+<pre><code>## Type rfNews() to see new features/changes/bug fixes.</code></pre>
+<pre><code>## 
+## Attaching package: &#39;randomForest&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     margin</code></pre>
+<pre class="r"><code>library(xgboost)        #gradient boosting 
+library(caret)          #tune hyper-parameters</code></pre>
+<pre><code>## Loading required package: lattice</code></pre>
+<pre class="r"><code>library(rattle)         #Fancy</code></pre>
+<pre><code>## Rattle: A free graphical interface for data science with R.
+## Version 5.1.0 Copyright (c) 2006-2017 Togaware Pty Ltd.
+## Type &#39;rattle()&#39; to shake, rattle, and roll your data.</code></pre>
+<pre><code>## 
+## Attaching package: &#39;rattle&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:xgboost&#39;:
+## 
+##     xgboost</code></pre>
+<pre><code>## The following object is masked from &#39;package:randomForest&#39;:
+## 
+##     importance</code></pre>
+<pre class="r"><code>library(rpart.plot)     #Enhanced 
+library(RColorBrewer)   #Color
+library(party)          #Alternative decision tree algorithm</code></pre>
+<pre><code>## Loading required package: mvtnorm</code></pre>
+<pre><code>## Loading required package: modeltools</code></pre>
+<pre><code>## Loading required package: stats4</code></pre>
+<pre><code>## Loading required package: strucchange</code></pre>
+<pre><code>## Loading required package: zoo</code></pre>
+<pre><code>## 
+## Attaching package: &#39;zoo&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     as.Date, as.Date.numeric</code></pre>
+<pre><code>## Loading required package: sandwich</code></pre>
+<pre><code>## 
+## Attaching package: &#39;party&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:partykit&#39;:
+## 
+##     cforest, ctree, ctree_control, edge_simple, mob, mob_control,
+##     node_barplot, node_bivplot, node_boxplot, node_inner,
+##     node_surv, node_terminal</code></pre>
+<pre class="r"><code>attach(iris)</code></pre>
+<pre class="r"><code>names(iris)</code></pre>
+<pre><code>## [1] &quot;Sepal.Length&quot; &quot;Sepal.Width&quot;  &quot;Petal.Length&quot; &quot;Petal.Width&quot; 
+## [5] &quot;Species&quot;</code></pre>
+<pre class="r"><code>set.seed(123)
+tree.iris &lt;- rpart(Species ~ Sepal.Width  + Petal.Width, data = iris)
+print(tree.iris$cptable)</code></pre>
+<pre><code>##     CP nsplit rel error xerror       xstd
+## 1 0.50      0      1.00   1.21 0.04836666
+## 2 0.44      1      0.50   0.76 0.06123180
+## 3 0.01      2      0.06   0.07 0.02583280</code></pre>
+<pre class="r"><code>cp1 &lt;- min(tree.iris$cptable[3, ])
+prune.tree.iris &lt;-  prune(tree.iris, cp &lt;- cp1)
+plot(as.party(prune.tree.iris))</code></pre>
+<p><img src="544_HW_4_Acosta_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>rparty.test &lt;- predict(prune.tree.iris, newdata = iris, type = &quot;class&quot;)
+table(rparty.test, iris$Species)</code></pre>
+<pre><code>##             
+## rparty.test  setosa versicolor virginica
+##   setosa         50          0         0
+##   versicolor      0         49         5
+##   virginica       0          1        45</code></pre>
+<pre class="r"><code>(50+49+45)/(50+49+45+6)</code></pre>
+<pre><code>## [1] 0.96</code></pre>
+<p>Missclasification error equal to 4%</p>
+<pre class="r"><code>pairs(iris[, c(&quot;Sepal.Width&quot;, &quot;Petal.Width&quot;)],pch=21,bg=c(&quot;red&quot;,&quot;green&quot;,&quot;blue&quot;)[unclass(Species)])</code></pre>
+<p><img src="544_HW_4_Acosta_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<ul>
+<li><p>The red group is well defined, every data below 0.8 belong to the red group. In the tree when <code>Petal.Width</code> is below 0.8 does not exist missclasification.</p></li>
+<li><p>The green group is well defined, but we have 5 data point from blue group mixed when <code>Petal.Width</code> is greater than 0.8 and samller than 1.75, in the tree we can see virginica representing this five values.</p></li>
+<li><p>The blue group is well defined as well when <code>Petal.Width</code> is grater or equal 1.75, but we have 1 Versicolor data point mixed with the this group as we can see in the tree.</p></li>
+</ul>
+<p>Q: Build a decision tree where Species is a function of all variables Sepal.Width, Petal.Width, Sepal.Length, and Sepal.Length. Plot the tree. Comment on the misclassification rate in this new tree.</p>
+<pre class="r"><code>tree.iris2 &lt;- rpart(Species ~ ., data = iris)</code></pre>
+<pre class="r"><code>cp2 &lt;- min(tree.iris2$cptable[3, ])
+prune.tree.iris2 &lt;-  prune(tree.iris2, cp &lt;- cp2)
+plot(as.party(prune.tree.iris2))</code></pre>
+<p><img src="544_HW_4_Acosta_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre class="r"><code>rparty.test2 &lt;- predict(prune.tree.iris2, newdata = iris, type = &quot;class&quot;)
+table(rparty.test2, iris$Species)</code></pre>
+<pre><code>##             
+## rparty.test2 setosa versicolor virginica
+##   setosa         50          0         0
+##   versicolor      0         49         5
+##   virginica       0          1        45</code></pre>
+<pre class="r"><code>(50+49+45)/(50+49+45+6)</code></pre>
+<pre><code>## [1] 0.96</code></pre>
+<p>Missclasification error is equal to 4%, same result we had with <code>Petal.Width</code> and <code>Speal.Width</code> variables.</p>
+</div>
+<div id="problem-2" class="section level1">
+<h1>Problem 2</h1>
+<pre class="r"><code>library(MASS)
+attach(Pima.te)</code></pre>
+<pre class="r"><code>pima &lt;- Pima.te
+set.seed(123) #random number generator
+#create training and testing sets
+ind &lt;- sample(2, nrow(pima), replace = TRUE, prob = c(0.7, 0.3))
+pima.train &lt;- pima[ind == 1, ] #the training data set
+pima.test &lt;- pima[ind == 2, ] #the test data set</code></pre>
+<pre class="r"><code>set.seed(123)
+rf.pima &lt;- randomForest(type ~ ., data = pima.train)
+rf.pima</code></pre>
+<pre><code>## 
+## Call:
+##  randomForest(formula = type ~ ., data = pima.train) 
+##                Type of random forest: classification
+##                      Number of trees: 500
+## No. of variables tried at each split: 2
+## 
+##         OOB estimate of  error rate: 21.94%
+## Confusion matrix:
+##      No Yes class.error
+## No  136  20   0.1282051
+## Yes  32  49   0.3950617</code></pre>
+<p>The OOB error rate is 21.94% which is pretty hihg when we are talking about deseas.</p>
+<pre class="r"><code>plot(rf.pima)</code></pre>
+<p><img src="544_HW_4_Acosta_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<pre class="r"><code>ntree &lt;- which.min(rf.pima$err.rate[, 1])
+ntree</code></pre>
+<pre><code>## [1] 150</code></pre>
+<p>We need 64 trees to optimize the model accuracy</p>
+<pre class="r"><code>rf.pima.2 &lt;- randomForest(type ~ ., data = pima.train, ntree = ntree)
+rf.pima.2</code></pre>
+<pre><code>## 
+## Call:
+##  randomForest(formula = type ~ ., data = pima.train, ntree = ntree) 
+##                Type of random forest: classification
+##                      Number of trees: 150
+## No. of variables tried at each split: 2
+## 
+##         OOB estimate of  error rate: 21.52%
+## Confusion matrix:
+##      No Yes class.error
+## No  136  20   0.1282051
+## Yes  31  50   0.3827160</code></pre>
+<pre class="r"><code>rf.pima.predict &lt;- predict(rf.pima.2, newdata = pima.test, type = &quot;response&quot;)
+table(rf.pima.predict, pima.test$type)</code></pre>
+<pre><code>##                
+## rf.pima.predict No Yes
+##             No  56  13
+##             Yes 11  15</code></pre>
+<pre class="r"><code>(56+15)/(56+15+11+13)</code></pre>
+<pre><code>## [1] 0.7473684</code></pre>
+<p>The accuracy is 74%</p>
+<pre class="r"><code>varImpPlot(rf.pima.2)</code></pre>
+<p><img src="544_HW_4_Acosta_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+</div>
+<div id="problem-3" class="section level1">
+<h1>Problem 3</h1>
+<pre class="r"><code>library(ISLR)
+attach(Carseats)</code></pre>
+<pre class="r"><code>data(Carseats)
+High &lt;- with(Carseats, ifelse(Sales &lt;= 8, &quot;No&quot;, &quot;Yes&quot;))
+Carseats &lt;- data.frame(Carseats, High)</code></pre>
+<pre class="r"><code>set.seed(217)
+
+#create training and testing sets
+ind3 &lt;- sample(2, nrow(Carseats), replace = TRUE, prob = c(0.7, 0.3))
+carseats.train &lt;- Carseats[ind3 == 1, ]
+carseats.test &lt;- Carseats[ind3 == 2, ]</code></pre>
+<pre class="r"><code>set.seed(123)
+tree.carseats &lt;- rpart(High ~ .-Sales, data = carseats.train)
+tree.carseats$cptable</code></pre>
+<pre><code>##           CP nsplit rel error    xerror       xstd
+## 1 0.23577236      0 1.0000000 1.0000000 0.06833647
+## 2 0.12195122      1 0.7642276 0.9105691 0.06733512
+## 3 0.05691057      2 0.6422764 0.8536585 0.06647365
+## 4 0.04065041      3 0.5853659 0.7560976 0.06456772
+## 5 0.03658537      4 0.5447154 0.7560976 0.06456772
+## 6 0.03252033      6 0.4715447 0.7479675 0.06438326
+## 7 0.01219512      8 0.4065041 0.7317073 0.06400203
+## 8 0.01000000     10 0.3821138 0.7642276 0.06474813</code></pre>
+<pre class="r"><code>cp3 &lt;- min(tree.carseats$cptable[7, ])
+prune.tree.carseats &lt;-  prune(tree.carseats, cp &lt;- cp3)
+fancyRpartPlot(prune.tree.carseats)</code></pre>
+<p><img src="544_HW_4_Acosta_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<pre class="r"><code>rparty.test3 &lt;- predict(prune.tree.carseats, newdata = carseats.test, type = &quot;class&quot;)
+table(rparty.test3, carseats.test$High)</code></pre>
+<pre><code>##             
+## rparty.test3 No Yes
+##          No  65   9
+##          Yes  5  32</code></pre>
+<p>The accuracy we get here is</p>
+<pre class="r"><code>(65+32)/(65+32+14)</code></pre>
+<pre><code>## [1] 0.8738739</code></pre>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
