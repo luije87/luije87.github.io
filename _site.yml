@@ -4,7 +4,7 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "Assigments"
+    - text: "Statistical Methods"
       href: assigments.html
       menu:
         - text: "Basic Statistics in R"
@@ -17,7 +17,7 @@ navbar:
           href: MAT_502_HW_4_Acosta.html
         - text: "Final Project"
           href: 502_Final_Project_Acosta.html
-    - text: "544"
+    - text: "Data Mining and Machine Learning"
       href: assigments.html
       menu:
        - text: "Multivariate Linear Regression"
